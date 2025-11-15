@@ -1,0 +1,1 @@
+This is submission API assignment, sample 2 to test scores with completely random inputs.
