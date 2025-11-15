@@ -1,0 +1,60 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+ENV/
+.venv/
+
+# Jupyter notebooks (if accidentally created)
+.ipynb_checkpoints/
+
+# PyCharm / VSCode
+.idea/
+.vscode/
+
+# --- OS files ---
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# --- Logs ---
+*.log
+
+# --- Model / data cache ---
+*.joblib
+*.pickle
+
+# If you want to commit the final `plagiarism_model.pkl`, remove the above line.
+
+# --- Streamlit ---
+.streamlit/
+
+# --- Build / dist ---
+build/
+dist/
+
+# --- Python packaging ---
+*.egg-info/
+*.egg
+.eggs/
+
+# --- Environment variables ---
+.env
+*.env
+
+# --- Temporary files ---
+*.tmp
+*.temp
+*~
+
+# --- Project-specific (optional) ---
