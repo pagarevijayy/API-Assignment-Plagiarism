@@ -1,0 +1,30 @@
+_format_version: "2.1"
+_transform: true
+
+services:
+- name: plagiarism-service
+  url: http://host.docker.internal:5000
+  routes:
+  - name: plagiarism-route
+    paths:
+      - /check
+    methods:
+      - POST
+    strip_path: false
+
+plugins:
+- name: rate-limiting
+  route: plagiarism-route
+  config:
+    minute: 5
+    day: 100
+    limit_by: ip
+    policy: local
+
+# Corrected: allowed_payload_size set to 51200 bytes (50 KB)
+- name: request-size-limiting
+  route: plagiarism-route
+  config:
+    allowed_payload_size: 51200
+    size_unit: bytes
+    require_content_length: false
