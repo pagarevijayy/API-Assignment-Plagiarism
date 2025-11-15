@@ -9,7 +9,7 @@ from utils import calculate_cosine_similarity, highlight_matching_text
 app = Flask(__name__)
 model = joblib.load("plagiarism_model.pkl")
 
-# ---------------- Minimal rate limiters ----------------
+# ---------------- Rate limiters Implementation ----------------
 
 class TokenBucket:
     def __init__(self, capacity, refill_rate):
@@ -78,7 +78,7 @@ def get_leaky_bucket(key, capacity, leak_rate):
             _bucket_store[key] = b
         return b
 
-# ---------------- configuration (adjust for demo) ----------------
+# ---------------- Configuration (adjust for demo) ----------------
 # Set ALGO = "token" or "leaky"
 ALGO = "leaky"   # "token" or "leaky"
 
@@ -105,7 +105,7 @@ def is_allowed(req):
         allowed = b.allow(1.0)
         return allowed
 
-# ---------------- /check route (original business logic, untouched) ----------------
+# ---------------- Endpoint ----------------
 
 @app.route("/check", methods=["POST"])
 def check():
@@ -113,7 +113,6 @@ def check():
     if not is_allowed(request):
         return jsonify({"error": "Too Many Requests"}), 429
 
-    # --- original logic preserved exactly ---
     file1 = request.files['original']
     file2 = request.files['submission']
     text1 = file1.read().decode("utf-8")
