@@ -1,4 +1,4 @@
-# Plagiarism Checker — Multi-Component Codebase
+# Plagiarism Checker 
 
 Overview
 --------
